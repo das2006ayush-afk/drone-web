@@ -120,3 +120,25 @@ offline demo. If you change the simulation, copy the file's contents between tho
 ## Source and attribution
 
 This repository is a republished copy of [OUTPOST — Disaster Response Command Center](https://github.com/raunakdg06-star/drone-web-), shared with permission from the original project owner. Original project authorship and credits remain with the original creator.
+
+
+## FOG//SIGHT — AI Fog Detection & Visibility Intelligence
+
+A companion road-safety module is available at **[FOG//SIGHT](./frontend/fog-detection/index.html)**. It accepts road-camera images and weather readings (relative humidity, temperature and wind speed), then produces an experimental fog index, visibility proxy and driver-risk advisory.
+
+### Components
+- `frontend/fog-detection/index.html`: GitHub Pages frontend; image analysis can run locally in the browser.
+- `fog-service/app.py`: optional Flask API for server-side image-feature and weather fusion.
+- `fog-service/requirements.txt`: Python dependencies.
+
+### Run the optional API locally
+```bash
+cd fog-service
+python -m venv .venv
+# Activate the environment, then:
+pip install -r requirements.txt
+python app.py
+```
+The API listens on port 5001. In FOG//SIGHT, set the API URL to `http://localhost:5001` to use it.
+
+**Important:** This repository currently contains an experimental computer-vision/weather heuristic, not a trained or validated fog-detection model. Visibility values are estimates, not certified measurements. Do not use the prototype as the sole basis for driving or vehicle-control decisions. A trained model and real sensor calibration must be added and validated before operational use.
